@@ -6,7 +6,7 @@
 </head>
 <body>
 <!--Logo-->
-<img src="images/logo.jpg" alt="logo" width="200" height="100">
+<img src="images/logo.jpg" alt="logo" width="200" height="200">
 <!--Formulario de acceso-->
 <!--Formulario en tabla-->
 <table>
