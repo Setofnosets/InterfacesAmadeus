@@ -53,7 +53,7 @@ public class Oyente_Gestor_videojuegos extends HttpServlet {
                 case "7":
                     //Redireccionar a la pagina de DLC
                     System.out.println(req.getParameter("juegoSeleccionado"));
-                    if(req.getParameter("juegoSeleccionado") != null){
+                    if(req.getParameter("juegoSeleccionado") != ""){
                         req.setAttribute("juegoSeleccionado", req.getParameter("juegoSeleccionado"));
                         dispatcher = req.getRequestDispatcher("IU_Gestor_DLC.jsp");
                         dispatcher.forward(req, resp);

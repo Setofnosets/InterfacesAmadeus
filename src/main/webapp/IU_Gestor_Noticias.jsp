@@ -31,7 +31,7 @@
       </tr>
       <tr>
         <td>
-          <textarea style="width: 100%; height: 400px; resize: none; font-size: 14px" readonly>Contenido</textarea>
+          <textarea style="width: 100%; height: 200px; resize: none; font-size: 14px" readonly>Contenido</textarea>
         </td>
       </tr>
       <%
