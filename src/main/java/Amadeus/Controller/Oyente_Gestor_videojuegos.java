@@ -50,6 +50,18 @@ public class Oyente_Gestor_videojuegos extends HttpServlet {
                         dispatcher.forward(req, resp);
                     }
                     break;
+                case "7":
+                    //Redireccionar a la pagina de DLC
+                    System.out.println(req.getParameter("juegoSeleccionado"));
+                    if(req.getParameter("juegoSeleccionado") != null){
+                        req.setAttribute("juegoSeleccionado", req.getParameter("juegoSeleccionado"));
+                        dispatcher = req.getRequestDispatcher("IU_Gestor_DLC.jsp");
+                        dispatcher.forward(req, resp);
+                    }else{
+                        dispatcher = req.getRequestDispatcher("IU_Libreria.jsp");
+                        dispatcher.forward(req, resp);
+                    }
+                    break;
                 default:
                     //Redireccionar a la pagina de inicio
                     dispatcher = req.getRequestDispatcher("index.jsp");
@@ -65,6 +77,7 @@ public class Oyente_Gestor_videojuegos extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             //Redireccionar a la seccion de pagos
+            req.setAttribute("dlc", null);
             String juego = req.getParameter("juego");
             req.setAttribute("juego", juego);
             RequestDispatcher dispatcher;

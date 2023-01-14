@@ -19,6 +19,7 @@
     juegos.add("Juego 2");
     juegos.add("Juego 3");
     juegos.add("Juego 4");
+    String juegoSeleccionado = null;
   %>
 </head>
 <body>
@@ -51,6 +52,7 @@
             <% for (String juego : juegos) { %>
               if (event.target.innerHTML == "<%=juego%>") {
                 document.getElementById("juego").value = "<%=juego%>";
+                document.getElementById("juegoSeleccionado").value = "<%=juego%>";
               }
             <% } %>
           });
@@ -62,6 +64,8 @@
             <button type="submit" name="opcion" value="1">Tienda</button>
             <button type="submit" name="opcion" value="2">Noticias</button>
             <button type="submit" name="opcion" value="4">Ver perfil</button>
+            <input type="hidden" id="juegoSeleccionado" name="juegoSeleccionado" value="">
+            <button type="submit" name="opcion" value="7">Ver DLC</button>
           </form>
         </td>
       </tr>

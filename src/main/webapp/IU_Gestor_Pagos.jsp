@@ -13,6 +13,13 @@
         //TODO: Consultar informacion del juego en la base de datos
         String nombreJuego = request.getParameter("juego");
         String precio = "10";
+        String dlc = request.getParameter("dlc");
+        if(nombreJuego == null){
+            //TODO: Recuperar informacion dlc
+            nombreJuego = dlc;
+        }else{
+            //TODO: Recuperar informacion juego
+        }
     %>
 </head>
 <body>

@@ -44,7 +44,7 @@
                 <table style="border: 1px solid black; border-collapse: collapse;">
                     <tr>
                         <td>
-                            Juego: <input type="text" id="juego" name="juego" value="" readonly>
+                            Juego: <input type="text" id="juego" name="juego" value="" readonly required>
                         </td>
                     </tr>
                     <tr>
@@ -54,24 +54,23 @@
                     </tr>
                     <tr>
                         <td>
-                            <form action="Oyente_Gestor_videojuegos" method="get">
-                                <button type="submit" name="opcion" value="5">Mostrar reseñas</button>
-                            </form>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
                             <input type="submit" value="Comprar">
-                        </td>
-                        <td>
-                            <form action="Oyente_Gestor_videojuegos" method="get">
-                                <button type="submit" name="opcion" value="6">Regresar</button>
-                            </form>
                         </td>
                     </tr>
                 </table>
             </form>
-        </td>
+            <tr>
+                <td>
+                    <form action="Oyente_Gestor_videojuegos" method="get">
+                        <button type="submit" name="opcion" value="5" formnovalidate>Mostrar reseñas</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="Oyente_Gestor_videojuegos" method="get">
+                        <button type="submit" name="opcion" value="6">Regresar</button>
+                    </form>
+                </td>
+            </tr>
         <!--Mostrar informacion del videojuego seleccionado-->
         <script>
             addEventListener("click", function (event) {
@@ -86,7 +85,6 @@
                 <% } %>
             });
         </script>
-    </tr>
 </table>
 </body>
 </html>
