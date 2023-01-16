@@ -11,23 +11,23 @@ import Amadeus.SERVICE.DB_Connector;
 
 public class gestorVideojuego {
 	static DB_Connector con;
-    
-    public static List<String> visualizarJuegos() {
-    	List<String> nombreJ = new ArrayList<String>();
+
+    public static List<videojuego> visualizarJuegos() {
+    	List<videojuego> juegos = new ArrayList<videojuego>();
     	con = new DB_Connector();
         Connection reg = con.getConnection();
-        String sql="SELECT nombre FROM juegos";
+        String sql="SELECT * FROM juegos";
     	try {
     		Statement st=reg.createStatement();
 			ResultSet rs=st.executeQuery(sql);
 			while (rs.next()) {
-	            String nJ=rs.getString("nombre");
-	            nombreJ.add(nJ);
+				videojuego gameR = new videojuego(rs.getInt("id_juego"),rs.getString("nombre"),rs.getString("categoria"),rs.getString("genero"),rs.getDouble("precio"),rs.getString("descripcion"),rs.getString("desarrollador"));
+	            juegos.add(gameR);
 	        }
 		}catch (Exception x) {
 			JOptionPane.showMessageDialog(null, "ERROR: " + x);
 		}
-        return nombreJ;
+        return juegos;
     }
     
     public static void escribirResena(videojuego juego,String usuario,String titulo,String resenia,int calificacion,String fecha) {

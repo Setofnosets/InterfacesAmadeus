@@ -32,9 +32,9 @@ public class Oyente_Gestor_Pagos extends HttpServlet {
         String fechaVencimiento = req.getParameter("fechaVencimiento");
         String codigoSeguridad = req.getParameter("cvv");
         String precio = req.getParameter("precio");
-        videojuego juego = (videojuego) req.getSession().getAttribute("juego");
+        videojuego juego = (videojuego) req.getSession().getAttribute("juegoSeleccionado");
         //Verificacion
-        gestorPagos.comprarJuego(juego, "usuario");
+        gestorPagos.comprarJuego(juego, req.getSession().getAttribute("usuario").toString());
 
         PrintWriter out = resp.getWriter();
         out.println("<script type=\"text/javascript\">");

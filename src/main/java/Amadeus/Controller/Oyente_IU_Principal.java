@@ -36,11 +36,11 @@ public class Oyente_IU_Principal extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         try {
             gestorCuenta gestor = new gestorCuenta();
-            if(gestor.logIn(request.getParameter("usuario"), request.getParameter("contrasena")) == 1 ){
+            if(gestor.logIn(request.getParameter("usuario"), request.getParameter("password")) == 1 ){
                 request.getSession().setAttribute("usuario", request.getParameter("usuario"));
                 RequestDispatcher dispatcher = request.getRequestDispatcher("IU_Libreria.jsp");
                 dispatcher.forward(request, response);
-            } else if (gestor.logInDev(request.getParameter("usuario"), request.getParameter("contrasena")) == 1){
+            } else if (gestor.logInDev(request.getParameter("usuario"), request.getParameter("password")) == 1){
                 request.getSession().setAttribute("usuario", request.getParameter("usuario"));
                 RequestDispatcher dispatcher = request.getRequestDispatcher("IU_Libreria.jsp");
                 dispatcher.forward(request, response);

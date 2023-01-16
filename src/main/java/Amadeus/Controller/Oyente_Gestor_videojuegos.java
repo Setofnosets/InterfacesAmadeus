@@ -1,11 +1,14 @@
 package Amadeus.Controller;
 
+import Amadeus.MODEL.gestorVideojuego;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
+import java.util.List;
+
 import Amadeus.MODEL.videojuego;
 
 @WebServlet(name = "Oyente_Gestor_videojuegos", value = "/Oyente_Gestor_videojuegos")
@@ -78,9 +81,16 @@ public class Oyente_Gestor_videojuegos extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             //Redireccionar a la seccion de pagos
+            gestorVideojuego gestor = new gestorVideojuego();
             req.setAttribute("dlc", null);
-            videojuego juego = (videojuego) req.getSession().getAttribute("juego");
-            req.getSession().setAttribute("juego", juego);
+            String nombre = req.getParameter("juego");
+            List<videojuego> lista = gestor.visualizarJuegos();
+            for(videojuego v : lista){
+                if(v.getNombre().equals(nombre)){
+                    req.getSession().setAttribute("juegoSeleccionado", v);
+                    break;
+                }
+            }
             RequestDispatcher dispatcher;
             dispatcher = req.getRequestDispatcher("IU_Gestor_Pagos.jsp");
             dispatcher.forward(req, resp);
