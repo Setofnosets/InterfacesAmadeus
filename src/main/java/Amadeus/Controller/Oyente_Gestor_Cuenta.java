@@ -3,6 +3,9 @@ package Amadeus.Controller;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
+import Amadeus.MODEL.gestorCuenta;
+
+import static java.lang.Boolean.*;
 
 @WebServlet(name = "Oyente_Gestor_Cuenta", value = "/Oyente_Gestor_Cuenta")
 public class Oyente_Gestor_Cuenta extends HttpServlet{
@@ -33,9 +36,9 @@ public class Oyente_Gestor_Cuenta extends HttpServlet{
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         try {
+            gestorCuenta gestor = new gestorCuenta();
             RequestDispatcher dispatcher;
             if(request.getParameter("Registrarse") != null){
-                //TODO: Agregar el usuario a la base de datos y redireccionar a la pagina principal
                 String usuario = request.getParameter("usuario");
                 String nombre = request.getParameter("nombre");
                 String apellidoP = request.getParameter("apellidoP");
@@ -48,6 +51,7 @@ public class Oyente_Gestor_Cuenta extends HttpServlet{
                 System.out.println("c1: " + contrasena + " c2: " + contrasena2);
                 //Si las contraseñas coinciden agregar al usuario a la base de datos y redireccionar a la pagina principal
                 if(contrasena.equals(contrasena2)){
+                    gestor.registrarUsuario(usuario, nombre, apellidoP, apellidoM, direccion, telefono, correo, contrasena, FALSE);
                     dispatcher = request.getRequestDispatcher("index.jsp");
                     dispatcher.forward(request, response);
                 }
@@ -58,12 +62,14 @@ public class Oyente_Gestor_Cuenta extends HttpServlet{
                     dispatcher.forward(request, response);
                 }
             }
+            //Cambiar contraseña
             if(request.getParameter("Cambiar") != null){
-                //TODO: Cambiar la contraseña del usuario y redireccionar a la pagina principal
                 String contrasena = request.getParameter("contrasena");
                 String contrasena2 = request.getParameter("contrasena2");
+                String usuario = request.getParameter("usuario");
                 //Si las contraseñas coinciden agregar al usuario a la base de datos y redireccionar a la pagina principal
                 if(contrasena.equals(contrasena2)){
+                    gestor.cambiarPssw(gestor.visualizarCuenta(usuario).getId_usuario(), contrasena);
                     dispatcher = request.getRequestDispatcher("index.jsp");
                     dispatcher.forward(request, response);
                 }

@@ -1,4 +1,5 @@
-<%--
+<%@ page import="Amadeus.MODEL.usuario" %>
+<%@ page import="Amadeus.MODEL.gestorCuenta" %><%--
   Created by IntelliJ IDEA.
   User: locua
   Date: 13/01/2023
@@ -13,15 +14,8 @@
 <body>
 <h4>Informacion de la cuenta:</h4>
 <%
-    //TODO: Recuperar usuario de la base de datos
-    //BORRAR ESTO
-    String nombre = "Juan";
-    String apellidoP = "Perez";
-    String apellidoM = "Gonzalez";
-    String usuario = "juanperez";
-    String correo = "Juan@Ejemplo.com";
-    String telefono = "123456789";
-    String direccion = "Calle 123";
+    gestorCuenta gestor = new gestorCuenta();
+    usuario user = gestor.visualizarCuenta(request.getSession().getAttribute("usuario").toString());
 %>
 <table>
     <tr>
@@ -30,31 +24,31 @@
                 <table>
                     <tr>
                         <td>Usuario</td>
-                        <td><input type="text" name="usuario" value="<%=usuario%>" required readonly></td>
+                        <td><input type="text" name="usuario" value="<%=user.getUsuario()%>" required readonly></td>
                     </tr>
                     <tr>
                         <td>Nombre</td>
-                        <td><input type="text" name="nombre" value="<%=nombre%>" required readonly></td>
+                        <td><input type="text" name="nombre" value="<%=user.getNombre()%>" required readonly></td>
                     </tr>
                     <tr>
                         <td>Apellido Paterno</td>
-                        <td><input type="text" name="apellidoP" value="<%=apellidoP%>" required readonly></td>
+                        <td><input type="text" name="apellidoP" value="<%=user.getPaterno()%>" required readonly></td>
                     </tr>
                     <tr>
                         <td>Apellido Materno</td>
-                        <td><input type="text" name="apellidoM" value="<%=apellidoM%>" required readonly></td>
+                        <td><input type="text" name="apellidoM" value="<%=user.getMaterno()%>" required readonly></td>
                     </tr>
                     <tr>
                         <td>Direccion</td>
-                        <td><input type="text" name="direccion" value="<%=direccion%>" required readonly></td>
+                        <td><input type="text" name="direccion" value="<%=user.getDireccion()%>" required readonly></td>
                     </tr>
                     <tr>
                         <td>Telefono</td>
-                        <td><input type="text" name="telefono" value="<%=telefono%>" required readonly></td>
+                        <td><input type="text" name="telefono" value="<%=user.getTelefono()%>" required readonly></td>
                     </tr>
                     <tr>
                         <td>Correo</td>
-                        <td><input type="text" name="correo" value="<%=correo%>" required readonly></td>
+                        <td><input type="text" name="correo" value="<%=user.getCorreo()%>" required readonly></td>
                     </tr>
                     <tr>
                         <td>Contraseña</td>

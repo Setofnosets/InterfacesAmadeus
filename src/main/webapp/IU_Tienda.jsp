@@ -1,5 +1,8 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="java.io.PrintWriter" %><%--
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="Amadeus.MODEL.gestorVideojuego"%>
+<%@ page import="Amadeus.MODEL.videojuego"%>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: locua
   Date: 14/01/2023
@@ -11,14 +14,10 @@
 <head>
     <title>Tienda</title>
     <%
+        gestorVideojuego gestor = new gestorVideojuego();
         PrintWriter wr = response.getWriter();
-        //TODO: Recuperar la lista de videojuegos en venta
         //TODO: Cambiar a clase Videojuego
-        ArrayList<String> juegos = new ArrayList<String>();
-        juegos.add("Juego 1");
-        juegos.add("Juego 2");
-        juegos.add("Juego 3");
-        juegos.add("Juego 4");
+        List<String> juegos = gestor.visualizarJuegos();
     %>
 </head>
 <body>
@@ -54,6 +53,21 @@
                     </tr>
                     <tr>
                         <td>
+                            Genero: <input type="text" id="genero" name="genero" value="" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Desarrollador: <input type="text" id="desarrollador" name="desarrollador" value="" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Descripcion: <textarea id="descripcion" name="descripcion" rows="4" cols="50" readonly></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             <input type="submit" value="Comprar">
                         </td>
                     </tr>
@@ -79,8 +93,11 @@
                 <% for (String juego : juegos) { %>
                 if (event.target.innerHTML == "<%=juego%>") {
                     document.getElementById("juego").value = "<%=juego%>";
-                    //Placeholder
                     document.getElementById("precio").value = "10";
+                    document.getElementById("genero").value = "tmp";
+                    document.getElementById("desarrollador").value = "tmp";
+                    document.getElementById("descripcion").value = "tmp";
+                    <%session.setAttribute("juego",juego);%>
                 }
                 <% } %>
             });

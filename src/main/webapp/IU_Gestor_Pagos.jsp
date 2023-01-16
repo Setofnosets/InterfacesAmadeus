@@ -1,4 +1,5 @@
-<%--
+<%@ page import="Amadeus.MODEL.videojuego" %>
+<%@ page import="Amadeus.MODEL.DLC" %><%--
   Created by IntelliJ IDEA.
   User: locua
   Date: 14/01/2023
@@ -10,24 +11,23 @@
 <head>
     <title>Comprar</title>
     <%
-        //TODO: Consultar informacion del juego en la base de datos
-        String nombreJuego = request.getParameter("juego");
-        String precio = "10";
-        String dlc = request.getParameter("dlc");
-        if(nombreJuego == null){
+        //TODO: Implementar pago DLC
+        videojuego juego = (videojuego) request.getSession().getAttribute("juego");
+        DLC dlc = (DLC) request.getSession().getAttribute("dlc");
+        if(juego == null){
             //TODO: Recuperar informacion dlc
-            nombreJuego = dlc;
+
         }else{
-            //TODO: Recuperar informacion juego
+            request.getSession().setAttribute("juego", juego);
         }
     %>
 </head>
 <body>
-    <h3><strong>Juego a comprar:</strong> <%=nombreJuego%></h3>
+    <h3><strong>Juego a comprar:</strong> <%=juego.getNombre()%></h3>
     <h3 style="padding-left: 100px">Ingrese los datos de su tarjeta de credito: </h3>
     <form action="Oyente_Gestor_Pagos" method="post">
-        <input type="hidden" name="juego" value="<%=nombreJuego%>">
-        <input type="hidden" name="precio" value="<%=precio%>">
+        <input type="hidden" name="juego" value="<%=juego.getNombre()%>">
+        <input type="hidden" name="precio" value="<%=juego.getPrecio()%>">
         <table style="padding-left: 125px">
             <tr>
                 <td>Numero de tarjeta:</td>
@@ -44,7 +44,7 @@
                 <td><input type="text" name="nombreTitular" size="30" maxlength="30"></td>
             </tr>
             <tr>
-                <td><strong>Total: </strong>$<%=precio%></td>
+                <td><strong>Total: </strong>$<%=juego.getPrecio()%></td>
             </tr>
             <tr>
                 <td><input type="submit" value="Comprar"></td>

@@ -1,4 +1,7 @@
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Amadeus.MODEL.gestorNoticias" %>
+<%@ page import="Amadeus.MODEL.noticia"%>
+<%@ page import="java.util.List" %> <%--
   Created by IntelliJ IDEA.
   User: locua
   Date: 14/01/2023
@@ -10,28 +13,25 @@
 <head>
     <title>Noticias</title>
   <%
-    //TODO: Recuperar noticias
-    ArrayList<String> noticias = new ArrayList<String>();
-    noticias.add("Noticia 1");
-    noticias.add("Noticia 2");
-    noticias.add("Noticia 3");
+    gestorNoticias gestor = new gestorNoticias();
+    List<noticia> noticias = gestor.visualizarNoticias();
   %>
 </head>
 <body>
   <table id="noticias" class="display">
     <tbody>
       <%
-        for (String noticia : noticias) {
+        for (noticia noticia : noticias) {
       %>
       <tr>
-        <td style="font-size: 24px"><%= noticia %></td>
+        <td style="font-size: 24px"><%= noticia.getTitulo() %></td>
       </tr>
       <tr>
-        <td style="font-size: 16px">Fecha</td>
+        <td style="font-size: 16px"><%=noticia.getFecha()%></td>
       </tr>
       <tr>
         <td>
-          <textarea style="width: 100%; height: 200px; resize: none; font-size: 14px" readonly>Contenido</textarea>
+          <textarea style="width: 100%; height: 200px; resize: none; font-size: 14px" readonly><%=noticia.getNoticia()%>></textarea>
         </td>
       </tr>
       <%

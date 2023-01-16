@@ -1,39 +1,45 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
+
 <head>
+    <link rel="stylesheet" href="CSS/normalize.css">
+    <link rel="stylesheet" href="CSS/index.css">
     <title>Amadeus</title>
 </head>
+
 <body>
-<!--Logo-->
-<img src="images/logo.jpg" alt="logo" width="200" height="200">
-<!--Formulario de acceso-->
-<!--Formulario en tabla-->
-<table>
-    <tr>
-        <td>
-            <form action="Oyente_IU_Principal" method="post">
-                <table>
-                    <tr>
-                        <td>Usuario:</td>
-                        <td><input type="text" name="usuario" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td>Contraseña:</td>
-                        <td><input type="password" name="password" value="" required></td>
-                    </tr>
-                    <tr>
-                        <td><input type="submit" value="Entrar"/></td>
-                    </tr>
-                </table>
-            </form>
-        </td>
+<div id="CuadroInicio">
+
+
+    <!--Logo-->
+    <img src="images/logo.jpg" alt="logo" id="logo">
+    <!--Formulario de acceso-->
+    <!--Formulario en tabla-->
+
+
+
+    <form action="Oyente_IU_Principal" method="post">
+        <div class="formulario">
+            <label for="fusuario">Usuario:</label>
+            <input idtype="text" name="usuario" value="" required id="fusuario">
+        </div>
+        <div class="formulario">
+            <label for="fpassword">Contraseña:</label>
+            <input type="password" name="password" value="" required id="fpassword">
+        </div>
+        <a href=""> <input type="submit" value="Entrar" id="enviar">  </a>
+    </form>
+    </td>
     </tr>
-</table>
-<h5>¿No tienes cuenta?</h5>
-<form action="Oyente_IU_Principal" method="get">
-    <button type="submit" name="opcion" value="1">Registrate</button>
-    <button type="submit" name="opcion" value="2">Ver tienda</button>
-</form>
+    </table>
+    <h5>¿No tienes cuenta?</h5>
+    <form action="Oyente_IU_Principal" method="get">
+        <a href=""><button class="boton" type="submit" name="opcion" value="1">Registrate</button></a>
+        <a href=""><button class="boton" type="submit" name="opcion" value="2">Ver tienda</button></a>
+    </form>
+
+</div>
 </body>
+
 </html>

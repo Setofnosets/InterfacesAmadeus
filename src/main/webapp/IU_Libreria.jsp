@@ -1,5 +1,7 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="java.io.PrintWriter" %><%--
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="Amadeus.MODEL.libreria" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: locua
   Date: 13/01/2023
@@ -12,13 +14,9 @@
     <title>Libreria</title>
   <%
     PrintWriter wr = response.getWriter();
-    //TODO: Recuperar datos de la libreria y quitar comentarios
     //TODO: Cambiar a clase Videojuego
-    ArrayList<String> juegos = new ArrayList<String>();
-    juegos.add("Juego 1");
-    juegos.add("Juego 2");
-    juegos.add("Juego 3");
-    juegos.add("Juego 4");
+    libreria lib = new libreria();
+    List<String> juegos = lib.mostrarLibreria(request.getSession().getAttribute("usuario").toString());
     String juegoSeleccionado = null;
   %>
 </head>

@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
+import Amadeus.MODEL.videojuego;
 
 @WebServlet(name = "Oyente_Gestor_videojuegos", value = "/Oyente_Gestor_videojuegos")
 public class Oyente_Gestor_videojuegos extends HttpServlet {
@@ -78,8 +79,8 @@ public class Oyente_Gestor_videojuegos extends HttpServlet {
         try {
             //Redireccionar a la seccion de pagos
             req.setAttribute("dlc", null);
-            String juego = req.getParameter("juego");
-            req.setAttribute("juego", juego);
+            videojuego juego = (videojuego) req.getSession().getAttribute("juego");
+            req.getSession().setAttribute("juego", juego);
             RequestDispatcher dispatcher;
             dispatcher = req.getRequestDispatcher("IU_Gestor_Pagos.jsp");
             dispatcher.forward(req, resp);
