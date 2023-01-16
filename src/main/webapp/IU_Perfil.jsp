@@ -27,31 +27,31 @@
                 <table>
                     <tr>
                         <td> <span>Usuario</span></td>
-                        <td><input class="input2" type="text" name="usuario" value="<%=usuario%>" required readonly></td>
+                        <td><input class="input2" type="text" name="usuario" value="<%=user.getUsuario()%>" required readonly></td>
                     </tr>
                     <tr>
                         <td> <span>Nombre</span> </td>
-                        <td><input class="input2" type="text" name="nombre" value="<%=nombre%>" required readonly></td>
+                        <td><input class="input2" type="text" name="nombre" value="<%=user.getNombre()%>" required readonly></td>
                     </tr>
                     <tr>
                         <td> <span>Apellido Paterno</span> </td>
-                        <td><input class="input2" type="text" name="apellidoP" value="<%=apellidoP%>" required readonly></td>
+                        <td><input class="input2" type="text" name="apellidoP" value="<%=user.getPaterno()%>" required readonly></td>
                     </tr>
                     <tr>
                         <td> <span>Apellido Materno</span> </td>
-                        <td><input class="input2" type="text" name="apellidoM" value="<%=apellidoM%>" required readonly></td>
+                        <td><input class="input2" type="text" name="apellidoM" value="<%=user.getMaterno()%>" required readonly></td>
                     </tr>
                     <tr>
                         <td> <span>Direccion</span> </td>
-                        <td><input class="input2" type="text" name="direccion" value="<%=direccion%>" required readonly></td>
+                        <td><input class="input2" type="text" name="direccion" value="<%=user.getDireccion()%>" required readonly></td>
                     </tr>
                     <tr>
                         <td> <span>Telefono</span> </td>
-                        <td><input class="input2" type="text" name="telefono" value="<%=telefono%>" required readonly></td>
+                        <td><input class="input2" type="text" name="telefono" value="<%=user.getTelefono()%>" required readonly></td>
                     </tr>
                     <tr>
                         <td> <span>Correo</span> </td>
-                        <td><input class="input2" type="text" name="correo" value="<%=correo%>" required readonly></td>
+                        <td><input class="input2" type="text" name="correo" value="<%=user.getCorreo()%>" required readonly></td>
                     </tr>
                     <tr>
                         <td> <span>Contraseña</span> </td>

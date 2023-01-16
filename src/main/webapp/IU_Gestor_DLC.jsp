@@ -1,5 +1,5 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="Amadeus.MODEL.gestorDLC" <%--
+<%@ page import="Amadeus.MODEL.gestorDLC"%> <%--
   Created by IntelliJ IDEA.
   User: locua
   Date: 14/01/2023
